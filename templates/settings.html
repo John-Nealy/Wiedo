@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Task Scheduler Cretor for Reports">
+        <title>Task Scheduler Connect</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    </head>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+
+        }, false);
+    </script>
+    <body>
+        
+        {% include 'header.html' %}
+        
+            <div id='Fields'>
+                <div id='ProfileInfo'>
+                    <p id='FieldTitle'>Profile Info</p>
+                    <hr>
+                    <p><p class="CategorySetting">Email:</p> {{ session['email'] }}</p>
+                    <hr>
+                    <p class="CategorySetting">Profile Picture:</p>
+                    
+                    <img src={{ url_for('static', filename=session['username'] + '.jpg' ) }} id="SettingsImage">
+                    <br>
+                    <hr>
+                    <a href="" id="FieldEdit"><h5>Edit Profile Info</h5></a>
+
+                </div>
+        
+        {% include 'footer.html' %}
+        
+    </body>
+
+</html>

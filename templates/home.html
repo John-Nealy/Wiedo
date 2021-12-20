@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Task Scheduler Cretor for Reports">
+        <title>Task Scheduler Connect</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    </head>
+    
+    <script>
+        function validateAndUpload(input){
+            var file = input.files[0];
+
+            if (file) {
+                alert('files are uploading')
+                document.getElementById("main-container").submit();
+            };
+        };
+    </script>
+
+    <body>
+
+        {% include 'header.html' %}
+        
+        <div id="NavBar">
+            <div class="button-container">
+                <button type='submit' class='NavBar-buttons' form="main-container" value='view' name='action' formaction ='view' >VIEW</button>
+                
+                <label for="upload" class='NavBar-buttons' id='upload-txt'>UPLOAD</label>    
+                <input  class='NavBar-buttons' form="main-container" type ="file" id='upload' formaction="upload" onChange="validateAndUpload(this);" name='files'/>
+                <button type='submit' class='NavBar-buttons' form="main-container" value='download' name='action' formmethod="POST" formaction="download">DOWNLOAD</button>
+                <button class='NavBar-buttons' form="main-container" value='delete' formaction="delete" name='action'>DELETE</button>
+                <button class='NavBar-buttons' form="main-container" value='copy' name='action'>COPY</button>
+            </div>
+        </div>
+
+            <form id="main-container" method="POST" action="upload" enctype="multipart/form-data">
+                {% for folder in folders %}
+                    <div class="folder-container">
+                        <p class="container-tag">{{folder}}</p>
+                        <input type="checkbox" name='content' id={{folder}} value="{{folder}}"/>
+                        <label for={{folder}} class="folder">
+                            <img class="label-img" src=""/>
+                        </label>
+                    </div>
+                {% endfor %}
+                {% for file in files %}
+                    <div class="folder-container">
+                        <p class="container-tag">{{file}}</p>
+                        <input type="checkbox" name='content' id={{file}} value="{{file}}" />
+                        <label for={{file}} class="files">
+                            <img class="label-img" src=""/>
+                        </label>
+                    </div>
+                {% endfor %}
+            </form>
+        
+
+        {% include 'footer.html' %}
+
+    </body>
+</html>

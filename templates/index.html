@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Task Scheduler Cretor for Reports">
+        <title>Task Scheduler Connect</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    </head>
+    <body>
+        
+        {% include 'header.html' %}
+        
+        <div id="LoginBox">
+            <div id="box">
+                <form action="{{ url_for('LoggingIn') }}" method="POST" id='LoginForm'>
+                    Sign in<br><input class="LoginField" type="text" name="username" placeholder="Username"><br>
+                    <input class="LoginField" type="password" name="password" placeholder="Password"><br>
+                    <a href="{{ url_for('Create') }}"><button type="button" value="" id="create-account-btn"><center>Create Account</center></button></a>
+                    <button type="submit" value="Login" id="Login"><center>Login</center></button>
+                </form>
+            </div>        
+        </div>
+        
+        {% include 'footer.html' %}
+        
+    </body>
+
+</html>
