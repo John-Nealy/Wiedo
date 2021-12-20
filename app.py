@@ -80,7 +80,7 @@ def Home():
         folders = []
         files = []
         
-         #Initial Login
+        
         folders, files = return_elements(f'{app.config["USERS_FILE_PATH"]}/{name}/Files')
         return render_template("home.html", name = name, folders = folders, files = files)
     return redirect("/")
