@@ -1,11 +1,14 @@
-from sqlite3.dbapi2 import connect
 from flask import Flask, render_template, request, redirect, session, url_for, send_file, abort
 from werkzeug.utils import secure_filename
 import sqlite3 as sql
-import subprocess, sys, os
+import os
 import hashlib
+
+#Viewing Documents
 from docx import Document
 import PyPDF2
+
+#removing folders
 import shutil
 
 app = Flask(__name__)
