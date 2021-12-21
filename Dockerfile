@@ -2,9 +2,9 @@ FROM python:3.10.1-buster
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY requirments.txt .
 RUN pip install -r requirments.txt
 
-COPY /app .
+COPY / .
 
-CMD ["python", "-m flask run --port 80"]
+CMD ["python", "app.py"]
