@@ -1,4 +1,4 @@
-<div id="Header">
+<header id="Header">
     <a href={{url_for('Home')}}><p id="Logo">Wiedo</p></a>
 
     {% if 'username' in session: %}
@@ -9,14 +9,14 @@
     <div id="HeaderBox">
         
         <div id="AccountDetails">
-            <div id="UsernameDetails">{{ name }}</div>
-            <div id="settings"><a href="{{ url_for('settings') }}">Settings</a></div>
+            <p id="UsernameDetails">{{ name }}</p>
+            <a id="settings" href="{{ url_for('settings') }}">Settings</a>
         </div>
 
         <a id="Logout" href="{{ url_for('logout') }}">Sign out</a>
         
     </div>
     {% endif %}
-</div>
-<div id="Main">
+</header>
+<main id="Main">
 
