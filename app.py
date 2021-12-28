@@ -153,6 +153,10 @@ def view():
                         pdfFileObj.close()
                         contents = '\n'.join(fullText)
                         return render_template('fileReader.html', name=name, fileContents = '', pdf = contents)
+                    case 'MOV' | 'mov' | 'MP4' | 'mp4' | 'ogg' | 'OGG':
+                        print('testing')
+                        contents = f"{path}/{request_content}"
+                        return render_template('fileReader.html', name=name, video = contents)
 
 
 
@@ -187,12 +191,23 @@ def delete():
         if '.' in request_content:
             os.remove(f"{session['folderPath']}/{request_content}")
         else:
-            shutil.rmtree(f"{session['folderPath']}{request_content}")
+            shutil.rmtree(f"{session['folderPath']}/{request_content}")
         folders, files = return_elements(session['folderPath'])
         return render_template("home.html", name = name, folders = folders, files = files)
 
     return redirect("/")
 
+@app.route('/new', methods = ['POST', 'GET'])
+def new():
+    if 'username in session':
+        name = session['username']
+        folderName = request.form['folder-name']
+        os.mkdir(f"{session['folderPath']}/{folderName}")
+
+        folders, files = return_elements(session['folderPath'])
+        return render_template("home.html", name = name, folders = folders, files = files)
+
+    return redirect("/")
 
 @app.route('/settings')
 def settings():

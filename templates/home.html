@@ -28,6 +28,7 @@
             };
         };
 
+
         function FolderCreationDisplay(){    
             var container = document.getElementsByClassName('new-creation')[0]
             if (container.style.display == 'none'){
@@ -80,12 +81,14 @@
             <div class="new-creation" style="display: none;">
                 
                     <h2 class="new-creation-title">Folder Name</h2>    
-                <form class="new-creation-form">    
-                    <input type="text" class="new-creation-input" name="folder-name" /> </br>
-                </form>
+                
+                    <form class="new-creation-form" id="new-folder-form" action="new" method="post">    
+                        <input type="text" class="new-creation-input" name="folder-name" /> </br>
+                    </form>
+                    
                     <div class="creation-btn-container">
                         <button class="cancel-btn" onclick="FolderCreationDisplay();">Cancel</button>
-                        <button class="create-btn">Create</button>
+                        <button class="create-btn" form="new-folder-form">Create</button>
                     </div>
                 
             </div>

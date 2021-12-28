@@ -9,21 +9,28 @@
     </head>
    
     <body>
-        
         {% include 'header.html' %}
-        <center>
-        {% if fileContents: %}
-            <img src = {{fileContents}} style="width: 80vw; height: 75vh;"/>
-        {% else %}
-            
-                <p style="width: 75vw; height: 75vh; overflow: auto;">
-                    {{fileContents}}{{wordDoc}}{{pdf}}
-                </p>
-            
-        {% endif %}
-        </center>
+        
+        <div id='main-container' style="overflow: hidden;">
+            <center>
+                {% if video: %}
+                        <video style="width: 75vw; height: 40vh; margin-top: 25%;" controls>
+                            <source src="{{video}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                {% endif %}
+                {% if fileContents: %}
+                    <img src = {{fileContents}} style="width: 80vw; height: 75vh;"/>
+                {% else %}
+                    
+                        <p style="width: 75vw; height: 75vh; overflow: auto;">
+                            {{fileContents}}{{wordDoc}}{{pdf}}
+                        </p>
+                    
+                {% endif %}
+            </center>
+        <div>
         {% include 'footer.html' %}
-    
     </body>
 
 </html>
